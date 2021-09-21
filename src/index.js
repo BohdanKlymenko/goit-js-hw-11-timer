@@ -1,21 +1,24 @@
 import './sass/main.scss';
 
-class CountdownTimer{
-    constructor({ selector, targetDate }) {
-        this.selector = selector;
-        this.targetDate = targetDate;
-        this.refs = {
-            fieldDays: document.querySelector(`${this.selector} span[data-value="days"]`),
-            fieldHours: document.querySelector(`${this.selector} span[data-value="hours"]`),
-            fieldMins: document.querySelector(`${this.selector} span[data-value="mins"]`),
-            fieldSecs: document.querySelector(`${this.selector} span[data-value="secs"]`),
-        };
-        this.start();
-    }
-    start = () => {
-        this.refs.fieldDays.textContent=100
-        console.log(this.refs);
+class CountdownTimer {
+  constructor({ selector, targetDate }) {
+    this.selector = selector;
+    this.targetDate = targetDate;
+    this.refs = {
+      fieldDays: document.querySelector(`${this.selector} span[data-value="days"]`),
+      fieldHours: document.querySelector(`${this.selector} span[data-value="hours"]`),
+      fieldMins: document.querySelector(`${this.selector} span[data-value="mins"]`),
+      fieldSecs: document.querySelector(`${this.selector} span[data-value="secs"]`),
     };
+    this.start();
+  }
+  start = () => {
+    this.refs.fieldDays.textContent = 100;
+    this.refs.fieldHours.textContent = 100;
+    this.refs.fieldMins.textContent = 100;
+    this.refs.fieldSecs.textContent = 100;
+    console.log(this.refs);
+  };
 }
 
 const timer1 = new CountdownTimer({
@@ -23,13 +26,12 @@ const timer1 = new CountdownTimer({
   targetDate: new Date('Jul 17, 2019'),
 });
 
-// timer1.start()
 
 /*
  * Оставшиеся дни: делим значение UTC на 1000 * 60 * 60 * 24, количество
  * миллисекунд в одном дне (миллисекунды * секунды * минуты * часы)
  */
-// const days = Math.floor(time / (1000 * 60 * 60 * 24));
+const days = Math.floor(time / (1000 * 60 * 60 * 24));
 
 /*
  * Оставшиеся часы: получаем остаток от предыдущего расчета с помощью оператора
